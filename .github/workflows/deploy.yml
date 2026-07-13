@@ -35,6 +35,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Upgrade Wrangler
+        run: pnpm add --save-dev wrangler@4.110.0 --no-frozen-lockfile
+
       - name: Run deploy script
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
