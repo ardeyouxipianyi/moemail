@@ -47,7 +47,7 @@ async function migrate() {
     }
 
     const dbName = config.d1_databases[0].database_name
-    const dbBinding = config.d1_databases[0].binding
+    const dbId = config.d1_databases[0].database_id
 
     // Generate migrations
     console.log('Generating migrations...')
@@ -55,7 +55,7 @@ async function migrate() {
     
     // Applying migrations
     console.log(`Applying migrations to ${mode} database: ${dbName}`)
-    await execAsync(`wrangler d1 migrations apply ${dbBinding} --${mode}`)
+    await execAsync(`wrangler d1 migrations apply ${dbId} --${mode} --config wrangler.json`)
 
     console.log('Migration completed successfully!')
   } catch (error) {
